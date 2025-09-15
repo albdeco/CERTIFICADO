@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificado Online</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+      background: #f5f5f5;
+    }
+    #form {
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 500px;
+    }
+    input {
+      padding: 12px;
+      width: 80%;
+      font-size: 18px;
+      margin: 15px 0;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+    }
+    #certificado {
+      display: none;
+      width: 21cm;
+      height: 14.8cm;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border: 15px solid #ffcc00;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      position: relative;
+      font-family: 'Georgia', serif;
+    }
+    .titulo {
+      font-size: 32px;
+      color: #333;
+      margin: 40px 0 20px;
+    }
+    .nome {
+      font-size: 28px;
+      color: #d40000;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+    .texto {
+      font-size: 18px;
+      color: #555;
+      line-height: 1.6;
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="form">
+    <h1>🎓 Gerador de Certificado</h1>
+    <p>Digite seu nome para baixar seu certificado:</p>
+    <input type="text" id="nomeAluno" placeholder="Seu nome completo" autofocus />
+    <br>
+    <button onclick="gerarCertificado()">📥 Gerar e Baixar Certificado</button>
+  </div>
+
+  <div id="certificado">
+    <div class="titulo">CERTIFICADO DE CONCLUSÃO</div>
+    <div class="nome" id="nomeExibido">[NOME DO ALUNO]</div>
+    <div class="texto">
+      Certificamos que <strong id="nomeTexto">[NOME]</strong> concluiu com êxito o curso online oferecido por nossa instituição, demonstrando dedicação e comprometimento com o aprendizado.
+      <br><br>
+      Data de Emissão: <span id="dataAtual"></span>
+      <br><br>
+      Assinatura: _________________________
+    </div>
+  </div>
+
+  <script>
+    function gerarCertificado() {
+      const nome = document.getElementById('nomeAluno').value.trim();
+      if (!nome) {
+        alert('❌ Por favor, digite seu nome completo!');
+        return;
+      }
+
+      // Preenche o certificado
+      document.getElementById('nomeExibido').innerText = nome;
+      document.getElementById('nomeTexto').innerText = nome;
+
+      // Data atual
+      const data = new Date().toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      });
+      document.getElementById('dataAtual').innerText = data;
+
+      // Mostra o certificado
+      document.getElementById('certificado').style.display = 'block';
+
+      // Gera e baixa o PDF
+      setTimeout(() => {
+        const elemento = document.getElementById('certificado');
+        html2canvas(elemento, { scale: 2 }).then(canvas => {
+          const imgData = canvas.toDataURL('image/png');
+          const pdf = new window.jspdf.jsPDF({
+            orientation: 'landscape',
+            unit: 'mm',
+            format: 'a4'
+          });
+          const imgWidth = 297;  // A4 landscape width
+          const imgHeight = (canvas.height * imgWidth) / canvas.width;
+          pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+          pdf.save(`certificado_${nome.replace(/\s+/g, '_')}.pdf`);
+        });
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>
