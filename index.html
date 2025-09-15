@@ -11,7 +11,7 @@
       font-family: 'Georgia', serif;
       text-align: center;
       padding: 40px;
-      background: #f9f9f9;
+      background: #fff9e6; /* fundo bege claro da página */
     }
     #form {
       margin: 30px auto;
@@ -33,7 +33,7 @@
     button {
       padding: 14px 28px;
       font-size: 19px;
-      background: #007bff;
+      background: #d4a017; /* dourado suave */
       color: white;
       border: none;
       border-radius: 6px;
@@ -42,7 +42,7 @@
       font-family: 'Georgia', serif;
     }
     button:hover {
-      background: #0056b3;
+      background: #b8860b;
     }
     #certificado {
       display: none;
@@ -50,28 +50,32 @@
       height: 14.8cm;
       margin: 40px auto;
       padding: 50px 30px;
-      background: white;
+      background: linear-gradient(135deg, #fdf6e3, #faeccd); /* degradê bege/amarelo claro — estilo pão/pergaminho */
       box-shadow: 0 0 15px rgba(0,0,0,0.2);
       position: relative;
       font-family: 'Georgia', serif;
       text-align: center;
       line-height: 2;
+      border-radius: 8px;
+      border: 1px solid #e0c67a;
     }
     .titulo {
       font-size: 30px;
       font-weight: bold;
       margin: 0 0 35px 0;
       letter-spacing: 1px;
+      color: #8b4513; /* marrom chocolate */
     }
     .para {
       font-size: 20px;
       margin: 15px 0 25px 0;
+      color: #5a3921;
     }
     .nome {
       font-size: 26px;
       font-weight: bold;
       margin: 25px 0 10px 0;
-      color: #000;
+      color: #8b0000; /* vermelho vinho/bordô */
       text-transform: uppercase;
       letter-spacing: 1.5px;
     }
@@ -79,21 +83,24 @@
       font-size: 18px;
       margin: 0 0 30px 0;
       font-style: italic;
-      color: #555;
+      color: #5a3921;
     }
     .detalhes {
       font-size: 18px;
       margin: 20px 0 15px 0;
       line-height: 1.6;
+      color: #5a3921;
     }
     .assinatura {
       font-size: 18px;
       margin: 45px 0 10px 0;
       font-weight: bold;
+      color: #8b4513;
     }
     .rodape {
       font-size: 16px;
       margin-top: 5px;
+      color: #5a3921;
     }
   </style>
 </head>
@@ -134,7 +141,7 @@
       // Generar y mostrar fecha actual (dd/mm/yyyy)
       const hoy = new Date();
       const dia = String(hoy.getDate()).padStart(2, '0');
-      const mes = String(hoy.getMonth() + 1).padStart(2, '0'); // Enero es 0!
+      const mes = String(hoy.getMonth() + 1).padStart(2, '0');
       const anio = hoy.getFullYear();
       const fechaFormateada = `${dia}/${mes}/${anio}`;
       document.getElementById('dataExibida').innerText = `Fecha de emisión: ${fechaFormateada}`;
