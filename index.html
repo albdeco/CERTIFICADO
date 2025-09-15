@@ -80,13 +80,15 @@
       width: 21cm;
       height: 14.8cm;
       margin: 40px auto;
-      background: url('https://i.imgur.com/7cXuKkY.png') no-repeat center center;
+      background: url('https://imgur.com/a/cu7ASLN') no-repeat center center;
       background-size: cover;
       position: relative;
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
       line-height: 1.8;
       overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
     .titulo {
       font-size: 36px;
@@ -137,21 +139,6 @@
       margin: 0 0 0 0;
       color: #000;
     }
-    .logo-medalha {
-      position: absolute;
-      top: 60px;
-      right: 50px;
-      width: 100px;
-      height: 100px;
-    }
-    .laurel {
-      position: absolute;
-      bottom: 100px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 60px;
-    }
   </style>
 </head>
 <body>
@@ -170,6 +157,7 @@
     <div class="subtitulo">CONCLUSIÓN</div>
     <div class="para">PARA EL/LA ESTUDIANTE</div>
     <div class="nome" id="nomeExibido">[NOMBRE DEL ESTUDIANTE]</div>
+    <div class="data" id="dataExibida">Fecha de emisión: [FECHA]</div>
     <div class="linha"></div>
     <div class="detalhes">
       Conclusión del curso de PAN SIN GLÚTEN - 2025 - módulo 01 - 30 horas
@@ -178,8 +166,6 @@
     <div class="diretor">CEO creado y enseñado</div>
     <div class="assinatura" style="margin-left: 150px;">Juan Sanchéz</div>
     <div class="diretor" style="margin-left: 150px;">Director</div>
-    <img src="https://i.imgur.com/7cXuKkY.png" alt="Medalha" class="logo-medalha" />
-    <img src="https://i.imgur.com/7cXuKkY.png" alt="Laurel" class="laurel" />
   </div>
 
   <script>
@@ -192,6 +178,14 @@
 
       // Mostrar nombre en MAYÚSCULAS
       document.getElementById('nomeExibido').innerText = nome.toUpperCase();
+
+      // Generar y mostrar fecha actual (dd/mm/yyyy)
+      const hoy = new Date();
+      const dia = String(hoy.getDate()).padStart(2, '0');
+      const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+      const anio = hoy.getFullYear();
+      const fechaFormateada = `${dia}/${mes}/${anio}`;
+      document.getElementById('dataExibida').innerText = `Fecha de emisión: ${fechaFormateada}`;
 
       // Mostrar certificado
       document.getElementById('certificado').style.display = 'block';
