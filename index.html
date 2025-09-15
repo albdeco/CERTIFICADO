@@ -9,7 +9,7 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #f9f9f9, #e6f7ff);
+      background: #f9f9f9;
       margin: 0;
       padding: 0;
       height: 100vh;
@@ -73,6 +73,85 @@
       font-size: 12px;
       color: #666;
     }
+
+    /* Estilo do certificado */
+    #certificado {
+      display: none;
+      width: 21cm;
+      height: 14.8cm;
+      margin: 40px auto;
+      background: url('https://i.imgur.com/7cXuKkY.png') no-repeat center center;
+      background-size: cover;
+      position: relative;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      line-height: 1.8;
+      overflow: hidden;
+    }
+    .titulo {
+      font-size: 36px;
+      font-weight: bold;
+      margin: 30px 0 10px 0;
+      color: #003399;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .subtitulo {
+      font-size: 24px;
+      font-weight: normal;
+      margin: 0 0 40px 0;
+      color: #000;
+    }
+    .para {
+      font-size: 20px;
+      margin: 20px 0 30px 0;
+      color: #000;
+    }
+    .nome {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #000;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .linha {
+      width: 70%;
+      height: 1px;
+      background: #000;
+      margin: 30px auto;
+    }
+    .detalhes {
+      font-size: 18px;
+      margin: 30px 0;
+      color: #000;
+      line-height: 1.6;
+    }
+    .assinatura {
+      font-size: 16px;
+      margin: 40px 0 0 0;
+      color: #000;
+    }
+    .diretor {
+      font-size: 16px;
+      margin: 0 0 0 0;
+      color: #000;
+    }
+    .logo-medalha {
+      position: absolute;
+      top: 60px;
+      right: 50px;
+      width: 100px;
+      height: 100px;
+    }
+    .laurel {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 60px;
+    }
   </style>
 </head>
 <body>
@@ -86,8 +165,7 @@
     <div class="footer">© 2025 Chef. Alicia Duarte | Curso de Pan Sin Glúten</div>
   </div>
 
-  <div id="certificado" style="display: none;">
-    <!-- Aqui vai o certificado com fundo azul e medalha -->
+  <div id="certificado">
     <div class="titulo">CERTIFICADO</div>
     <div class="subtitulo">CONCLUSIÓN</div>
     <div class="para">PARA EL/LA ESTUDIANTE</div>
